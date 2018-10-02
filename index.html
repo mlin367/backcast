@@ -31,6 +31,7 @@
 
   <script>
     backboneReady(() => {
+      window.sampleCollection = new Videos(exampleVideoData);
       new AppView(exampleVideoData);
     });
   </script>
