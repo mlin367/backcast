@@ -11,7 +11,7 @@ var Videos = Backbone.Collection.extend({
         part: 'snippet',
         query: 'hack reactor',
         maxResults: 5,
-        key: YOUTUBE_API_KEY
+        key: window.YOUTUBE_API_KEY
       },
       contentType: 'application/json',
       success: function (data) {

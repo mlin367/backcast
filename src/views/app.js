@@ -4,25 +4,27 @@ var AppView = Backbone.View.extend({
 
   initialize: function(exampleVideoData) {
 
-    // TODO this is messy
-    if (exampleVideoData) {
-      this.videos = new Videos(exampleVideoData);
-    } else {
-      this.videos = new Videos();
-    }
-
+    this.videos = new Videos();
+    this.videos.search('backbone');
     this.render();
 
+    this.videos.on('sync', function(){
+      this.render(true);
+    }, this);
   },
 
 
-  render: function() {
-
+  render: function(isRenderingAPIData) {
     this.$el.html(this.template());
     this.$el.find('.list').html(new VideoListView({collection: this.videos}).render().$el);
-    this.$el.find('.player').html(new VideoPlayerView({collection: this.videos}).render(this.videos.at(0).attributes).$el);
+    this.$el.find('.search').html(new SearchView({collection: this.videos}).render().$el);
 
-
+    if (isRenderingAPIData) {
+      this.$el.find('.player').html(new VideoPlayerView({collection: this.videos}).render(this.videos.at(0).attributes).$el);
+    } else {
+      this.$el.find('.player').html(new VideoPlayerView({collection: this.videos}).render().$el);
+    }
+    
     return this;
   },
 
