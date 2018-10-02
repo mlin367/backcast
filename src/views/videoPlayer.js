@@ -3,7 +3,6 @@ var VideoPlayerView = Backbone.View.extend({
   initialize: function() {
     this.collection.on('select', function(e) {
       this.render(e.attributes);
-      //this.render();
     }, this);
     this.collection.on('sync', () => {
       this.render(this.collection.at(0).attributes);
@@ -14,7 +13,7 @@ var VideoPlayerView = Backbone.View.extend({
     if (attributes) {
       this.$el.html(this.template(attributes));
     }
-    
+
     return this;
   },
 

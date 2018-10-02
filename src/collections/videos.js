@@ -2,8 +2,14 @@ var Videos = Backbone.Collection.extend({
 
   model: Video,
 
+  // initialize: function() {
+  //   this.on('sync', function() {
+  //     this.search();
+  //   }, this);
+  // },
+
   search: function(searchString) {
-    $.ajax({
+    Backbone.ajax({
       // This is the url you should use to communicate with the parse API server.
       url: 'https://www.googleapis.com/youtube/v3/search',
       type: 'GET',
@@ -17,6 +23,9 @@ var Videos = Backbone.Collection.extend({
       success: function (data) {
         this.reset(data.items);
         this.trigger('sync');
+
+        this.at(0).select();
+
         console.log('search successful');
       }.bind(this),
       error: function (data) {
