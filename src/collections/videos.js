@@ -24,17 +24,18 @@ var Videos = Backbone.Collection.extend({
       data: data,
       contentType: 'application/json',
       success: function (data) {
-        this.reset(data.items);
+        this.reset(this.parse(data));
         this.trigger('sync');
-
-
-        console.log('search successful');
       }.bind(this),
       error: function (data) {
         // See: https://developer.mozilla.org/en-US/docs/Web/API/console.error
         console.error('search failed', data.responseText);
       }
     });
+  },
+
+  parse: function(data) {
+    return data.items;
   },
 
   search: function(searchString) {
