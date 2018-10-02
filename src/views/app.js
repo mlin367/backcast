@@ -8,7 +8,7 @@ var AppView = Backbone.View.extend({
     this.videos.search('backbone');
     this.render();
 
-    this.videos.on('sync', function(){
+    this.videos.on('sync', function() {
       this.render(true);
     }, this);
   },
@@ -24,7 +24,7 @@ var AppView = Backbone.View.extend({
     } else {
       this.$el.find('.player').html(new VideoPlayerView({collection: this.videos}).render().$el);
     }
-    
+
     return this;
   },
 
