@@ -1,7 +1,6 @@
 <div class="video-player">
   <div class="embed-responsive embed-responsive-16by9">
-    <iframe class="embed-responsive-item" width="560" height="315" src="https://youtube.com/embe
-    d/<%= id.videoId %>" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    <iframe class="embed-responsive-item" width="560" height="315" src="<%= 'http://youtube.com/embed/' + id %>" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen sandbox="allow-scripts allow-same-origin allow-presentation"></iframe>
   </div>
   <div class="video-player-details">
       <h3> <%= snippet.title %> </h3>
