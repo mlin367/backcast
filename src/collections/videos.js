@@ -4,7 +4,9 @@ var Videos = Backbone.Collection.extend({
 
   initialize: function() {
     this.on('sync', function() {
-      this.at(0).select();
+      if (this.at(0)) {
+        this.at(0).select();
+      }
     }, this);
   },
 
@@ -29,7 +31,7 @@ var Videos = Backbone.Collection.extend({
       }.bind(this),
       error: function (data) {
         // See: https://developer.mozilla.org/en-US/docs/Web/API/console.error
-        console.error('search failed', data.responseText);
+        // console.error('search failed', data.responseText);
       }
     });
   },

@@ -19,7 +19,7 @@ var AppView = Backbone.View.extend({
     this.$el.find('.list').html(new VideoListView({collection: this.videos}).render().$el);
     this.$el.find('.search').html(new SearchView({collection: this.videos}).render().$el);
 
-    if (isRenderingAPIData) {
+    if (isRenderingAPIData && this.videos.at(0)) {
       this.$el.find('.player').html(new VideoPlayerView({collection: this.videos}).render(this.videos.at(0).attributes).$el);
     } else {
       this.$el.find('.player').html(new VideoPlayerView({collection: this.videos}).render().$el);

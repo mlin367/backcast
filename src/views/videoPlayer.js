@@ -5,7 +5,9 @@ var VideoPlayerView = Backbone.View.extend({
       this.render(e.attributes);
     }, this);
     this.collection.on('sync', () => {
-      this.render(this.collection.at(0).attributes);
+      if (this.collection.at(0)) {
+        this.render(this.collection.at(0).attributes);
+      }
     }, this);
   },
 
